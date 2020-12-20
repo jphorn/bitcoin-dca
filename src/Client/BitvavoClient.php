@@ -58,6 +58,13 @@ class BitvavoClient implements BitvavoClientInterface
             'Content-Type' => 'application/json',
         ];
 
+        $this->logger->debug('bitvavo api call', [
+            'headers' => $headers,
+            'method' => $method,
+            'path' => $path,
+            'json' => $body ?? []
+        ]);
+
         $serverResponse = $this->httpClient->request($method, $path, [
             'headers' => $headers,
             'query' => $parameters,
